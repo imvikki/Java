@@ -1,4 +1,4 @@
-# Java
+#Java
 
 Lamda : Assigning a function to a variable.
 
@@ -20,14 +20,15 @@ this reference :
 	In anonymous inner class, this is the reference of the inner class.
 	In lambda, this is the reference of the outer class.
 	
-Streams :
+Streams : 
 	- It is one of the feature of java 8.
 	- It is not a collection. It doesn't store values. It doesn't change the values. 
 	  If you want the result, you can get it by using functions (eg. Count()).
 	
 Collections :
 
-ArrayList (List) :
+ArrayList (List) : 
+
 	- It’s a very good alternative of traditional java arrays.
 	- ArrayList is a resizable-array implementation of the List interface.
 	- ArrayList grow by half of its size
@@ -41,7 +42,7 @@ ArrayList (List) :
 	- It allows duplicate and null values.
 	- easy and fast in searching.
 	
-LinkedList (List and Dequeue) :
+LinkedList (List and Dequeue) : 
 	- LinkedList class can act as a list and queue both because it implements List and Deque interfaces.
 	
 	- Manipulation(insertion and deletion) with LinkedList is faster than ArrayList because it uses a doubly linked list, so no bit shifting is required in memory.
@@ -50,7 +51,7 @@ LinkedList (List and Dequeue) :
 	- It maintains insertion order.	
 	- It allows duplicate and null values.
 	
-Vector (List) (Threadsafe): 
+Vector (List) (Threadsafe) : 
 	- Vector is synchronized. This means if one thread is working on Vector, no other thread can get a hold of it.
 	- The vector was not the part of collection framework, it has been included in collections later. It can be considered as Legacy code. 
 	  There is nothing about Vector which List collection cannot do. Therefore Vector should be avoided.

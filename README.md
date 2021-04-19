@@ -43,6 +43,7 @@ ArrayList (List) :
 	- easy and fast in searching.
 	
 LinkedList (List and Dequeue) : 
+
 	- LinkedList class can act as a list and queue both because it implements List and Deque interfaces.
 	
 	- Manipulation(insertion and deletion) with LinkedList is faster than ArrayList because it uses a doubly linked list, so no bit shifting is required in memory.
@@ -52,6 +53,7 @@ LinkedList (List and Dequeue) :
 	- It allows duplicate and null values.
 	
 Vector (List) (Threadsafe) : 
+
 	- Vector is synchronized. This means if one thread is working on Vector, no other thread can get a hold of it.
 	- The vector was not the part of collection framework, it has been included in collections later. It can be considered as Legacy code. 
 	  There is nothing about Vector which List collection cannot do. Therefore Vector should be avoided.
@@ -64,37 +66,44 @@ Vector (List) (Threadsafe) :
 	- Is is not fail-fast (ConcurrentModificationException).
 	
 HashSet (Set) : 
+
 	- It doesnot allow duplicate. If you try to add a duplicate element, the old value would be overwritten.
 	- It doesnot maintain any order.
 	- It allows null values, however if you insert more than one nulls it would still return only one null value.
 	
 TreeSet (NavigableSet -> SortedSet -> Set) : 
+
 	- TreeSet is similar to HashSet except that it sorts the elements in the ascending order.
 	- It doesnot allow duplicate. If you try to add a duplicate element, the old value would be overwritten.
 	- It doesnot allows null value.
 	
 LinkedHashSet (Set) : 
+
 	- LinkedHashSet is similar to HashSet.
 	- It maintains the insertion order.
 	- It doesnot allow duplicate. If you try to add a duplicate element, the old value would be overwritten.
 	- It allows null values, however if you insert more than one nulls it would still return only one null value.
 	
 HashMap (Map) :	
+
 	- Used for storing Key & value pairs.
 	- It doesnot maintain any order.
 	- It allows null keys and null values.
 	
 TreeMap (NavigableMap -> SortedMap -> Map) : 
+
 	- Used for storing Key & value pairs.
 	- TreeMap is Red-Black tree based NavigableMap implementation. It is sorted according to the natural ordering of its keys.
 	- It doesnot allow a null key.
 
-LinkedHashMap (Map) :
+LinkedHashMap (Map) : 
+
 	- Used for storing Key & value pairs.
 	- It maintain insertion order.
 	- It allows null keys and null values.		
 	
-HashTable (Map), (Threadsafe) :
+HashTable (Map), (Threadsafe) : 
+
 	- The initial default capacity of Hashtable class is 11 whereas loadFactor is 0.75.
 	- Hashtable uses single lock for whole data.	
 	
@@ -103,7 +112,8 @@ HashTable (Map), (Threadsafe) :
 	- It doesnot allows null key or null value.	
 	- Is is not fail-fast (ConcurrentModificationException).	
 	  
-ConcurrentHashMap (ConcurrentMap -> Map) :
+ConcurrentHashMap (ConcurrentMap -> Map) : 
+
 	- It is the enhancement of HashMap. While dealing with Threads, HashMap is not a good choice because performance-wise HashMap is not up to the mark.
 	- The underlined data structure for ConcurrentHashMap is Hashtable.
 	- ConcurrentHashMap class is thread-safe.
@@ -119,6 +129,7 @@ ConcurrentHashMap (ConcurrentMap -> Map) :
 Q&A : 
 
 1. Iterator vs list-Iterator
+
 	- Iterator is used for traversing List, Set, Map.
 	  ListIterator is used for traversing List only, we cannot traverse Set using ListIterator.	
 	- Iterator can traverse in only forward direction.
@@ -128,7 +139,8 @@ Q&A :
 	- Iterator is fail fast (ConcurrentModificationException).
       ListIterator is not fail-fast.  
       
-2. Iterator vs Iterable      
+2. Iterator vs Iterable
+
 	- An Iterable is a simple representation of a series of elements that can be iterated over. 
 	  It does not have any iteration state such as a "current element". Instead, it has one method that produces an Iterator.
 	

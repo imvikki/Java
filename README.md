@@ -289,7 +289,7 @@ Q&A :
            
      Garbage Collector : 
      
-     	 - It destroys un-referenced objects.      					  									   					
+         - It destroys un-referenced objects.      					  									   					
 	  
 9. Java is not fully object-oriented : 
 
@@ -373,8 +373,76 @@ Q&A :
 		- It needs Garbage Collector to free up unused objects so as to keep the efficiency of the memory usage.
 		- Unlike stack, a heap isn't threadsafe and needs to be guarded by properly synchronizing the code.						
 	  
-	  
-**OOPS** : 
-
-	Class : 
 		
+
+																OOPS 
+																
+	- OOP is faster and easier to execute.
+	- OOP provides a clear structure for the programs.
+	- OOP helps to keep the Java code DRY "Don't Repeat Yourself", and makes the code easier to maintain, modify and debug.
+	- OOP makes it possible to create full reusable applications with less code and shorter development time.
+	
+	
+	Object : 
+		
+		- Object is a bundle of data and its behaviour(often known as methods).																
+		- An Object can be defined as an instance of a class.
+		- An object contains an address and takes up some space in memory.
+		- Example: A dog is an object because it has states like color, name, breed, etc. as well as behaviors like wagging the tail, barking, eating, etc.
+		
+	Class : 
+	
+		- A class can be considered as a blueprint using which you can create as many objects as you like.
+	
+	Inheritance : 
+	
+		- The process by which one class acquires the properties(data members) and functionalities(methods) of another class is called inheritance.
+		- The aim of inheritance is to provide the reusability of code.
+		- Child class has IS-A relationship with the parent class.
+		
+		- Single Inheritance: refers to a child and parent class relationship where a child class extends parent class.
+		- Multilevel inheritance: refers to a child and parent class relationship where a class extends the child class. 
+		  For example class C extends class B and class B extends class A.
+		- Hierarchical inheritance: refers to a child and parent class relationship where more than one classes extends the same class. 
+		  For example, classes B, C & D extends the same class A.  
+		- Hybrid inheritance: Combination of more than one types of inheritance in a single program. 
+		  For example class A & B extends class C and another class D extends class A then this is a hybrid inheritance example because it is a combination of single and hierarchical inheritance.  
+		  
+	Polymorphism : 
+	
+		- Polymorphism in Java is a concept by which we can perform a single action in different ways. 
+		- Polymorphism is derived from 2 Greek words: poly and morphs. The word "poly" means many and "morphs" means forms. 
+		  So polymorphism means many forms.
+		- There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism.
+		
+		- A method is overridden, not the data members, so runtime polymorphism can't be achieved by data members.
+		
+	Abstraction : 
+	
+		- Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+		- Another way, it shows only essential things to the user and hides the internal details, 
+		  for example, sending SMS where you type the text and send the message. 
+		  You don't know the internal processing about the message delivery. 
+		- There are two ways to achieve abstraction in java
+			Abstract class (0 to 100%)
+			Interface (100%)   
+			
+		- An abstract class must be declared with an abstract keyword.
+		- It can have abstract and non-abstract methods.
+		- It cannot be instantiated.
+		- It can have constructors and static methods also.
+		- It can have final methods which will force the subclass not to change the body of the method.	
+		
+	Encapsulation :
+	
+		- Binding (or wrapping) code and data together into a single unit are known as encapsulation. 
+		  For example, a capsule, it is wrapped with different medicines	
+		- However if we setup public getter and setter methods to update the private data fields then the outside class can access those private data fields via public methods.
+		- This way data can only be accessed by public methods thus making the private fields and their implementation hidden for outside classes. 
+		  That’s why encapsulation is known as data hiding.   
+			
+	
+			
+
+					
+	  

@@ -241,19 +241,19 @@ Q&A :
 	Class Loader : 
 		
 		- Bootstrap class loader : It loads core java API classes present in the “JAVA_HOME/jre/lib” directory.
-								   This path is popularly known as the bootstrap path.
+		  This path is popularly known as the bootstrap path.
 		- Extension class loader : It loads the classes present in the extensions directories “JAVA_HOME/jre/lib/ext”(Extension path).
-								   It is a child of the bootstrap class loader.
+		  It is a child of the bootstrap class loader.
 		- System/Application class loader: It is responsible to load classes from the application classpath. 
-										   It internally uses Environment Variable which mapped to java.class.path.	
-										   It is a child of the extension class loader.
+		  It internally uses Environment Variable which mapped to java.class.path.	
+		  It is a child of the extension class loader.
 										   
 	JVM memory : 
 	
 		Method area : 
 		
 			- In the method area, all class level information like class name, immediate parent class name, methods and variables information etc. are stored, including static variables. 
-		      There is only one method area per JVM, and it is a shared resource.
+			  There is only one method area per JVM, and it is a shared resource.
 		      
 		Heap area : 
 		

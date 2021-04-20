@@ -375,7 +375,7 @@ Q&A :
 	  
 		
 
-																OOPS 
+OOPS : 
 																
 	- OOP is faster and easier to execute.
 	- OOP provides a clear structure for the programs.

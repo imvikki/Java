@@ -289,7 +289,7 @@ Q&A :
            
      Garbage Collector : 
      
-     	- It destroys un-referenced objects.      					  									   					
+     	 - It destroys un-referenced objects.      					  									   					
 	  
 9. Java is not fully object-oriented : 
 
@@ -374,3 +374,7 @@ Q&A :
 		- Unlike stack, a heap isn't threadsafe and needs to be guarded by properly synchronizing the code.						
 	  
 	  
+**OOPS** : 
+
+	Class : 
+		

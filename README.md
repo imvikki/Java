@@ -441,8 +441,62 @@ OOPS :
 		- This way data can only be accessed by public methods thus making the private fields and their implementation hidden for outside classes. 
 		  That’s why encapsulation is known as data hiding.   
 			
-	
-			
+		  
+SOLID : 
 
+	Single Responsibility Principle : 
+		
+		- The single responsibility principle states that every Java class must perform a single functionality. 
+		  Implementation of multiple functionalities in a single class mashup the code and if any modification 
+		  is required may affect the whole class. 
+		- It precise the code and the code can be easily maintained.		  
+		
+	Open-Closed Principle :
+		
+		- The open-closed principle states that according to new requirements the module should be open for extension but closed for modification.
+		
+	Liskov Substitution Principle : 
+	
+		- Derived types must be completely substitutable for their base types.
+		- if class A is a subtype of class B, then we should be able to replace B with A without disrupting the behavior of our program.
+		
+	Interface Segregation : 
+	
+		- It simply means that larger interfaces should be split into smaller ones. 
+		  By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them.
+		  
+	Dependency Inversion : 
+	
+		- The principle of Dependency Inversion refers to the decoupling of software modules. 
+		  This way, instead of high-level modules depending on low-level modules, both will depend on abstractions.
+		  
+	
+ACID Properties (https://www.javatpoint.com/acid-properties-in-dbms) : 
+	
+	Atomicity : 
+	
+		- It means if any operation is performed on the data, either it should be performed or executed completely or should not be executed at all. 
+		  It further means that the operation should not break in between or execute partially. 
+		  In the case of executing operations on the transaction, the operation should be completely executed and not partially.
+		  
+	Consistency : 
+	
+		- The word consistency means that the value should remain preserved always. 
+		  In DBMS, the integrity of the data should be maintained, which means if a change in the database is made, it should remain preserved always. 
+		  In the case of transactions, the integrity of the data is very essential so that the database remains consistent before and after the transaction. 
+		  The data should always be correct.
+		  
+	Isolation : 
+		
+		- The term 'isolation' means separation. 
+		- It means if two operations are being performed on two different databases, they may not affect the value of one another. 
+		- In the case of transactions, when two or more transactions occur simultaneously, the consistency should remain maintained. 
+		- Any changes that occur in any particular transaction will not be seen by other transactions until the change is not committed in the memory.	  	  
+			
+	Durability : 
+	
+		- Durability ensures the permanency of something. 
+		- In DBMS, the term durability ensures that the data after the successful execution of the operation becomes permanent in the database. 
+		- The durability of the data should be so perfect that even if the system fails or leads to a crash, the database still survives.
 					
 	  

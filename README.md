@@ -372,9 +372,18 @@ Q&A :
 		- Access to this memory is relatively slower than stack memory.
 		- It needs Garbage Collector to free up unused objects so as to keep the efficiency of the memory usage.
 		- Unlike stack, a heap isn't threadsafe and needs to be guarded by properly synchronizing the code.						
-	  
-		
 
+18. Callable vs Runnable :		  
+		
+		Callable : 
+			- Callable is introduced in JDK 5.0
+			- Callable has call() method which returns value.
+			- call method can throw checked exception.
+		
+		Runnable : 		
+			- Runnable is introduced in JDK 1.0
+			- Runnable has run() method which doesn't return any value.
+			- run method can't throw checked exception.
 OOPS : 
 																
 	- OOP is faster and easier to execute.
@@ -498,7 +507,141 @@ ACID Properties (https://www.javatpoint.com/acid-properties-in-dbms) :
 		- Durability ensures the permanency of something. 
 		- In DBMS, the term durability ensures that the data after the successful execution of the operation becomes permanent in the database. 
 		- The durability of the data should be so perfect that even if the system fails or leads to a crash, the database still survives.
-					
+
+		
+Threads :
+
+	Dirty Read :
+	
+		- method needs to be syncronised, so that it gets same value what has been set. Else it is dirty read.
+		
+	Read/Write lock :
+	
+		- Two threads reading the same resource does not cause problems for each other, so multiple threads that want to 
+		  read the resource are granted access at the same time, overlapping. But, if a single thread wants to write to 
+		  the resource, no other reads nor writes must be in progress at the same time. 
+		  To solve this problem of allowing multiple readers but only one writer, you will need a read / write lock.
+		  
+		- It is worth noting that both unlockRead() and unlockWrite() calls notifyAll() rather than notify().
+		- Inside the ReadWriteLock there are threads waiting for read access, and threads waiting for write access. 
+		  If a thread awakened by notify() was a read access thread, it would be put back to waiting because there are 
+		  threads waiting for write access. However, none of the threads awaiting write access are awakened, so nothing 
+		  more happens. No threads gain neither read nor write access. By calling noftifyAll() all waiting threads are awakened 
+		  and check if they can get the desired access. 
+		  
+	Reentrant lock (replacement of synchronous) :
+	
+		- ReentrantLock allows threads to enter into the lock on a resource more than once. When the thread first enters into the lock, 
+		  a hold count is set to one. Before unlocking the thread can re-enter into lock again and every time hold count is incremented by one. 
+		  For every unlocks request, hold count is decremented by one and when hold count is 0, the resource is unlocked. 	   
+		  
+	ThreadLocal : 
+	
+		- The Java ThreadLocal class enables you to create variables that can only be read and written by the same thread. 
+		  Thus, even if two threads are executing the same code, and the code has a reference to the same ThreadLocal variable, 
+		  the two threads cannot see each other's ThreadLocal variables.	  
+		
+ForkJoinPool :
+
+	- Fork-join allows you to easily execute divide and conquer jobs, which have to be implemented manually if you want to execute it in ExecutorService. 
+	  In practice ExecutorService is usually used to process many independent requests (aka transaction) concurrently, and fork-join when you want to 
+	  accelerate one coherent job.		
+	  
+	- The ForkJoinPool makes it easy for tasks to split their work up into smaller tasks which are then submitted to the ForkJoinPool too. 
+	  Tasks can keep splitting their work into smaller subtasks for as long as it makes to split up the task.  
+	  
+	  Fork : 
+
+	  	- A task that uses the fork and join principle can fork (split) itself into smaller subtasks which can be executed concurrently.
+	    - By splitting itself up into subtasks, each subtask can be executed in parallel by different CPUs, or different threads on the same CPU.
+	    - The limit for when it makes sense to fork a task into subtasks is also called a threshold. 
+	      It is up to each task to decide on a sensible threshold.	
+	      
+	  Join : 
+	  
+	  	- When a task has split itself up into subtasks, the task waits until the subtasks have finished executing.    
+	  	- Once the subtasks have finished executing, the task may join (merge) all the results into one result.
+	  	
+	  - You create a ForkJoinPool using its constructor. As a parameter to the ForkJoinPool constructor you pass the indicated 
+	    level of parallelism you desire. 	
+	    
+	    ForkJoinPool forkJoinPool = new ForkJoinPool(4);
+	    
+	    
+	  	
+		
+https://www.callicoder.com/java-8-completablefuture-tutorial/#:~:text=CompletableFuture%20is%20used%20for%20asynchronous,its%20progress%2C%20completion%20or%20failure.
+CompletableFuture (This class implements Future<T>, CompletionStage<T> interfaces) : 				
+		
+	- CompletableFuture is used for asynchronous programming in Java. 
+	- Asynchronous programming is a means of writing non-blocking code by running a task on a separate thread 
+	  than the main application thread and notifying the main thread about its progress, completion or failure.
+	  
+	What can be achieved in CompletableFuture over Future ?
+		
+		- Let’s say that you’ve written a function to fetch the latest price of an e-commerce product from a remote API. 
+		  Since this API call is time-consuming, you’re running it in a separate thread and returning a Future from your function.
+		  Now, let’s say that If the remote API service is down, then you want to complete the Future manually by the last cached price of the product.  						
+		  
+		- Future does not notify you of its completion. It provides a get() method which blocks until the result is available.
+		  You don’t have the ability to attach a callback function to the Future and have it get called automatically when the Future’s result is available.
+		  
+		   - You can attach a callback to the CompletableFuture using thenApply(), thenAccept() and thenRun() methods  
+		  
+		- Sometimes you need to execute a long-running computation and when the computation is done, you need to send its result to 
+		  another long-running computation, and so on. You can not create such asynchronous workflow with Futures.
+		  
+		   - CompletableFuture.supplyAsync(() -> {
+				    return "Some Result"
+				}).thenApplyAsync(result -> {
+				    // Executed in a different thread from ForkJoinPool.commonPool()
+				    return "Processed Result"
+				})
+		  
+		- Let’s say that you have 10 different Futures that you want to run in parallel and then run some function 
+		  after all of them completes. You can’t do this as well with Future.  
+		  
+		  	- the Supplier function passed to thenApply() callback would return a simple value but in this case, it is returning a CompletableFuture. 
+		  	  Therefore, the final result in the above case is a nested CompletableFuture.
+
+			- If you want the final result to be a top-level Future, use thenCompose() method instead.
+			  CompletableFuture<Double> result = getUserDetail(userId)
+					.thenCompose(user -> getCreditRating(user));
+		  
+		- Future API does not have any exception handling construct.
+		
+			- Handle exceptions using exceptionally() callback.
+			- Handle exceptions using the generic handle() method.
+		
+	Methods : 
+	
+		CompletableFuture.runAsync : 
+		
+			- If you want to run some background task asynchronously and don’t want to return anything from the task, then you can 
+			  use CompletableFuture.runAsync() method. It takes a Runnable object and returns CompletableFuture<Void>.
+			  
+		CompletableFuture.supplyAsync : 
+		
+			- It takes a Supplier<T> and returns CompletableFuture<T> where T is the type of the value obtained by calling the given supplier.
+			
+	A note about Executor and Thread Pool :
+	
+		- You might be wondering that - Well, I know that the runAsync() and supplyAsync() methods execute their tasks in a separate thread. 
+		  But, we never created a thread right?
+          Yes! CompletableFuture executes these tasks in a thread obtained from the global ForkJoinPool.commonPool().
+
+		- But hey, you can also create a Thread Pool and pass it to runAsync() and supplyAsync() methods to let them execute 
+		  their tasks in a thread obtained from your thread pool.
+
+		- All the methods in the CompletableFuture API has two variants - One which accepts an Executor as an argument and one which doesn’t -
+
+		Variations of runAsync() and supplyAsync() methods : 
+			- static CompletableFuture<Void>  runAsync(Runnable runnable)
+			- static CompletableFuture<Void>  runAsync(Runnable runnable, Executor executor)
+			- static <U> CompletableFuture<U> supplyAsync(Supplier<U> supplier)
+			- static <U> CompletableFuture<U> supplyAsync(Supplier<U> supplier, Executor executor)
+					  	
+  
 	  
 Completable feature
 Fork join pool		

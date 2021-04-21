@@ -1,4 +1,4 @@
-#Java
+# Java
 
 Lamda : Assigning a function to a variable.
 
@@ -500,3 +500,8 @@ ACID Properties (https://www.javatpoint.com/acid-properties-in-dbms) :
 		- The durability of the data should be so perfect that even if the system fails or leads to a crash, the database still survives.
 					
 	  
+Completable feature
+Fork join pool		
+Thread (dirty read, dirty write, thread local, redundant lock, read lock,)
+producer/consumer problem
+Executable service
